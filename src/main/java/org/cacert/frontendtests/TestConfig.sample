@@ -1,0 +1,16 @@
+/*
+ * Rename this file to TestConfig.java and adjust it to your needs.
+ * TestConfig.java is in .gitignore so no passwords are accidentally
+ * committed.
+ */
+
+package org.cacert.frontendtests;
+
+public class TestConfig {
+    public static final String TEST_SYSTEM_URI = "https://cacert1.it-sls.de/";
+    public static final String MANAGEMENT_SYSTEM_URI = "https://ca-mgr1.it-sls.de/";
+    public static final String MAIL_DOMAIN = "cacert1.it-sls.de";
+    public static final String assurerEmail = "";
+    public static final String assurerPassword = "";
+    public static final int assurerMaxPoints = 35;
+}

@@ -9,7 +9,16 @@
 package org.cacert.frontendtests;
 
 //import junit.framework.TestCase;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
+import java.util.List;
+
+import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -30,7 +39,12 @@ public class TestHelper {
         INTERNET_EXPLORER,
         HTMLUNIT
     }
+    
+    private static RandomString stringGenerator = null;
 
+    static {
+    	stringGenerator = new RandomString(10);
+    }
     /**
      * Determines desired WebDriver type and returns accordingly.
      *
@@ -57,4 +71,38 @@ public class TestHelper {
                 throw new Exception("Invalid driver type passed " + type + "!");
         }
     }
+    
+    public static String generateFirstName() {
+        return "First" + stringGenerator.next();
+    }
+
+    public static String generateLastName() {
+        return "Last" + stringGenerator.next();
+    }
+
+    public static String generatePassword() {
+        return "PW-" + stringGenerator.next();
+    }
+
+    public static String generateEmailAddres(String firstName, String lastName) {
+        StringBuilder sb = new StringBuilder(firstName.toLowerCase());
+        sb.append(".")
+          .append(lastName.toLowerCase())
+          .append("@")
+          .append(TestConfig.MAIL_DOMAIN);
+        return sb.toString();
+    }
+
+    public static String extractActivationUri(String mailText) {
+        String lines[] = mailText.split("[\\r\\n]+");
+
+        for (String line : lines) {
+            if (line.startsWith("http://")) {
+                return line;
+            }
+        }
+        
+        return null;
+    }
+
 }
