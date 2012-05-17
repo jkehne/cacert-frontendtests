@@ -13,4 +13,6 @@ public class TestConfig {
     public static final String assurerEmail = "";
     public static final String assurerPassword = "";
     public static final int assurerMaxPoints = 35;
+    public static final String adminEmail = assurerEmail;
+    public static final String adminPassword = assurerPassword;
 }

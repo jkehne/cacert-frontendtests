@@ -49,7 +49,13 @@ public class AssuranceTest {
     }
 
     @After public void tearDown() {
-        driver.close();
+        try {
+			testUser.delete(driver);
+		} catch (TestFailureException e) {
+			fail(e.getMessage());
+		}
+    	
+    	driver.close();
         driver = null;
     }
 

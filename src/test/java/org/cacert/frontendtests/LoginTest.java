@@ -56,6 +56,7 @@ public class LoginTest {
 			testUser.register(driver);
 	    	testUser.login(driver);
 	    	testUser.logout(driver);
+	    	testUser.delete(driver);
 		} catch (TestFailureException e) {
 			System.out.println(e.getMessage());
 			assertTrue(e.getMessage(), false);
